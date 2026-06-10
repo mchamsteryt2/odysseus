@@ -141,6 +141,15 @@ services:
       - NTFY_BASE_URL=${NTFY_BASE_URL:-http://localhost:8091}
     restart: unless-stopped
 
+  ollama:
+        ports:
+            - 11434:11434
+        volumes:
+            - /mnt/md0/.ollama:/root/.ollama
+        container_name: ollama
+        image: ollama/ollama
+        restart: unless-stopped
+
 volumes:
   searxng-data:
   chromadb-data:
